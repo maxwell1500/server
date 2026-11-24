@@ -1300,8 +1300,8 @@ function isFinalSavePendingStatusInfo(statusInfo) {
   return statusInfo >= FINAL_SAVE_PENDING_STATUS_INFO;
 }
 
-const buildVersion = '4.1.2';
-const buildNumber = 37;
+const buildVersion = process.env.EO_BUILD_VERSION || '9.3.8';
+const buildNumber = process.env.EO_BUILD_NUMBER !== undefined ? Number(process.env.EO_BUILD_NUMBER) : 0;
 
 exports.TaskQueueData = TaskQueueData;
 exports.CMailMergeSendData = CMailMergeSendData;
