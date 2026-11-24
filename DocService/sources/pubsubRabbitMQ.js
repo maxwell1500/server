@@ -203,7 +203,7 @@ function healthCheckActive(pubsub) {
     if (!pubsub.connection) {
       return false;
     }
-    yield null;
+    yield Promise.resolve();
     return pubsub.connection.is_open();
   });
 }
