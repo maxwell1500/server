@@ -35,9 +35,17 @@ else
         SHARED_EXT := .so*
         LIB_PREFIX := lib
     endif
+    ifeq ($(UNAME_S),Darwin)
+        PLATFORM := mac
+        SHARED_EXT := .dylib
+        LIB_PREFIX := lib
+    endif
     UNAME_M := $(shell uname -m)
     ifeq ($(UNAME_M),x86_64)
         ARCHITECTURE := 64
+    endif
+    ifeq ($(UNAME_M),arm64)
+        ARCHITECTURE := arm64
     endif
     ifneq ($(filter %86,$(UNAME_M)),)
         ARCHITECTURE := 32
